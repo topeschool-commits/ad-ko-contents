@@ -1,7 +1,8 @@
 {{ define "main" }}
 <div class="home-header" style="border-bottom: 2px solid #f1f3f5; padding-bottom: 15px; margin-bottom: 30px;">
-    {{/* 🎯 실시간 전함 숫자 파악 로직 */}}
-    {{ $totalShips := len .Site.RegularPages }}
+    {{/* 🎯 핵심 전술 1: 'posts' 섹션에 있는 진짜 전함들만 골라냅니다 */}}
+    {{ $posts := where .Site.RegularPages "Section" "posts" }}
+    {{ $totalShips := len $posts }}
 
     <h2 style="margin: 0 0 5px 0; font-size: 1.6rem; font-weight: 800; color: #2c3e50; letter-spacing: -0.02em;">
         🔥 실시간 지식 콘텐츠 리포트
@@ -11,8 +12,8 @@
     </p>
 </div>
 
-{{/* 이하 기존 리스트 출력 로직 동일 */}}
-{{ $displayPosts := .Site.RegularPages.ByDate.Reverse }}
+{{/* 🎯 핵심 전술 2: 골라낸 전함들만 최신순으로 정렬하여 화면에 뿌립니다 */}}
+{{ $displayPosts := $posts.ByDate.Reverse }}
 {{ $paginator := .Paginate $displayPosts 20 }}
 
 <ul class="post-list" style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 20px;">
@@ -46,7 +47,7 @@
     {{ partial "pagination.html" . }}
 </div>
 
-{{/* 🎯 전함이 0척일 때의 경고창 (데이터가 잘 나오면 사라집니다) */}}
+{{/* 🎯 전함이 0척일 때의 경고창 */}}
 {{ if eq (len $displayPosts) 0 }}
 <div style="text-align: center; padding: 100px 0; color: #adb5bd; border: 2px dashed #eee; border-radius: 15px;">
     <p style="font-size: 1.1rem; font-weight: 600;">⚠️ 현재 배치된 지식 전함이 없습니다.</p>
