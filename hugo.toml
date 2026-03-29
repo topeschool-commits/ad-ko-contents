@@ -29,4 +29,4 @@ paginate = 20           # 4,200개를 감당하기 위해 한 페이지당 20척
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
-      unsafe = true  # 표(Table), 인라인 스타일 등 그누보드 데이터를 위한 필수 옵션
+      unsafe = true  # 표(Table), 인라인 스타일 등 그누보드 데이터를 위한 필수 옵션buildFuture = true
