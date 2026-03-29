@@ -3,4 +3,5 @@ Allow: /
 Disallow: /bin/
 Disallow: /config/
 
-Sitemap: https://namecard.adnamecard.com/sitemap.xml
+Sitemap: https://contents.adnamecard.com/sitemap.xml
+

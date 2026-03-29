@@ -1,16 +1,16 @@
 {{ define "main" }}
 <div class="home-header" style="border-bottom: 2px solid #f1f3f5; padding-bottom: 15px; margin-bottom: 30px;">
-    {{/* 🎯 메인 타이틀: 명함 제국에 걸맞은 뜨거운 제목으로 변경 */}}
-    <h2 style="margin: 0 0 5px 0; font-size: 1.6rem; font-weight: 800; color: #e74c3c; letter-spacing: -0.02em;">
-        🔥 최신 명함 광고 리포트
+    {{/* 🎯 메인 타이틀: 콘텐츠 제국의 방대한 스케일을 강조합니다 */}}
+    <h2 style="margin: 0 0 5px 0; font-size: 1.6rem; font-weight: 800; color: #2c3e50; letter-spacing: -0.02em;">
+        🔥 실시간 지식 콘텐츠 리포트
     </h2>
     <p style="margin: 0; color: #6c757d; font-size: 0.95rem; font-family: 'Pretendard', sans-serif; font-weight: 500;">
-        사령관님이 직접 수집한 323개 파트너사의 명함 정보를 실시간으로 확인하십시오.
+        사령관님의 제국에서 수집된 4,200여 개의 핵심 콘텐츠를 실시간으로 사열하십시오.
     </p>
 </div>
 
-{{/* 🎯 핵심 전술: "posts" 섹션에 있는 명함 데이터들을 메인으로 불러옵니다 */}}
-{{ $displayPosts := where .Site.RegularPages "Section" "in" (slice "posts" "local") }}
+{{/* 🎯 핵심 전술: 모든 섹션의 콘텐츠를 메인으로 집결시킵니다 */}}
+{{ $displayPosts := .Site.RegularPages }}
 {{ $paginator := .Paginate $displayPosts 20 }}
 
 <ul class="post-list" style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 20px;">
@@ -25,13 +25,9 @@
         <div class="post-meta" style="font-size: 0.85rem; color: #adb5bd; margin-bottom: 15px; display: flex; align-items: center; gap: 12px;">
             <span class="date">📅 {{ .Date.Format "2006년 01월 02일" }}</span>
             
-            {{/* 🎯 카테고리에 따른 지능형 태그 표시 */}}
-            {{ $categoryName := "미분류" }}
-            {{ if eq .Section "posts" }}{{ $categoryName = "명함 광고" }}{{ end }}
-            {{ if eq .Section "local" }}{{ $categoryName = "지역 광고" }}{{ end }}
-            
-            <span class="category" style="background: #fff0f0; color: #e74c3c; padding: 2px 10px; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">
-                {{ $categoryName }}
+            {{/* 🎯 지능형 카테고리 태그 표시 */}}
+            <span class="category" style="background: #f1f3f5; color: #495057; padding: 2px 10px; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">
+                {{ if .Section }}{{ .Section | upper }}{{ else }}CONTENT{{ end }}
             </span>
         </div>
 
@@ -46,15 +42,15 @@
     {{ end }}
 </ul>
 
-{{/* 🎯 하단 보급로(페이지네이션) 연결 */}}
+{{/* 🎯 하단 보급로 연결 */}}
 <div style="margin-top: 50px;">
     {{ partial "pagination.html" . }}
 </div>
 
 {{ if eq (len $displayPosts) 0 }}
 <div style="text-align: center; padding: 100px 0; color: #adb5bd; border: 2px dashed #eee; border-radius: 15px;">
-    <p style="font-size: 1.1rem; font-weight: 600;">⚠️ 현재 배치된 명함 전함이 없습니다.</p>
-    <p style="font-size: 0.9rem;">사령관님, 데이터를 GitHub에 푸시하여 영토를 채워 주십시오!</p>
+    <p style="font-size: 1.1rem; font-weight: 600;">⚠️ 현재 배치된 지식 전함이 없습니다.</p>
+    <p style="font-size: 0.9rem;">사령관님, 4,200척의 데이터를 GitHub에 푸시하여 영토를 가득 채워 주십시오!</p>
 </div>
 {{ end }}
 {{ end }}

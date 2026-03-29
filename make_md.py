@@ -2,14 +2,14 @@ import json
 import os
 
 # [작전 설정] 파일 및 폴더 위치 조준
-json_file = 'g5_write_namecard.json' # 사령관님이 업로드하신 파일명
-output_dir = 'content/posts'        # Hugo의 게시글 보관소
+json_file = 'g5_write_contents.json' # 콘텐츠 전용 데이터 파일로 조준 완료!
+output_dir = 'content/posts'         # Hugo의 게시글 보관소
 
 # 폴더가 없으면 즉시 건설
 os.makedirs(output_dir, exist_ok=True)
 
 try:
-    print(f"⏳ [namecard] 데이터 해독 작전 개시: {json_file} 읽는 중...")
+    print(f"⏳ [contents] 대규모 데이터 해독 작전 개시: {json_file} 읽는 중...")
     with open(json_file, 'r', encoding='utf-8') as f:
         raw_data = json.load(f)
 
@@ -56,7 +56,7 @@ draft: false
             mf.write(md_content)
         count += 1
 
-    print(f"✅ 작전 성공: 총 {count}개의 명함 전함이 {output_dir}/ 폴더에 실전 배치되었습니다!")
+    print(f"✅ 작전 성공: 총 {count}개의 방대한 콘텐츠 전함이 {output_dir}/ 폴더에 실전 배치되었습니다!")
 
 except FileNotFoundError:
     print(f"❌ 에러: {json_file} 파일이 사령탑에 없습니다. 업로드 상태를 확인하세요.")
