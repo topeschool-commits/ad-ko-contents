@@ -1,0 +1,59 @@
+{{ define "main" }}
+<div class="section-header" style="border-bottom: 2px solid #f1f3f5; padding-bottom: 15px; margin-bottom: 30px;">
+    <h2 style="margin: 0 0 5px 0; font-size: 1.4rem; font-weight: 700; color: #2c3e50;">
+        {{/* 🎯 섹션별 지능형 타이틀 배정 */}}
+        📂 {{ if eq .Section "posts" }}명함 광고 부대{{ else if eq .Section "local" }}지역 광고 부대{{ else if eq .Section "biz_forms" }}비즈니스 폼 부대{{ else }}{{ .Title }}{{ end }}
+    </h2>
+    <p style="margin: 0; color: #6c757d; font-size: 0.95rem;">
+        {{/* 🎯 섹션별 맞춤형 부제 */}}
+        {{ if eq .Section "posts" }}
+            323개의 비즈니스 파트너 전함을 정밀 사열합니다.
+        {{ else }}
+            {{ .Title }} 구역의 모든 전함을 사열합니다.
+        {{ end }}
+    </p>
+</div>
+
+{{/* 🎯 한 페이지당 15척의 전함을 배치합니다 */}}
+{{ $paginator := .Paginate .Pages 15 }}
+
+<ul class="post-list" style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 20px;">
+    {{ range $paginator.Pages }}
+    <li class="post-item" style="background: #ffffff; border-radius: 10px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #f1f3f5; transition: transform 0.2s, box-shadow 0.2s;">
+        <div class="post-title" style="margin-bottom: 10px;">
+            <a href="{{ .Permalink }}" style="text-decoration: none; color: #2c3e50; font-size: 1.3rem; font-weight: 700; line-height: 1.4; transition: color 0.2s;">
+                {{ .Title }}
+            </a>
+        </div>
+        
+        <div class="post-meta" style="font-size: 0.85rem; color: #adb5bd; display: flex; align-items: center; gap: 10px;">
+            <span class="date">📅 {{ .Date.Format "2006년 01월 02일" }}</span>
+            {{ if .Params.categories }}
+                <span style="color: #e9ecef;">|</span>
+                <span class="category" style="color: #e74c3c; font-weight: 600;">{{ index .Params.categories 0 }}</span>
+            {{ end }}
+        </div>
+
+        <div class="post-desc" style="color: #495057; font-size: 0.95rem; line-height: 1.7; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-top: 12px; word-break: keep-all;">
+            {{- if .Description -}}
+                {{ .Description }}
+            {{- else -}}
+                {{ .Summary | plainify | truncate 200 }}
+            {{- end -}}
+        </div>
+    </li>
+    {{ else }}
+    {{/* 🎯 전함이 없을 경우 표시되는 공백 구역 */}}
+    <div style="text-align: center; padding: 80px 0; color: #adb5bd; border: 2px dashed #f1f3f5; border-radius: 15px; background: #fafafa;">
+        <p style="font-size: 3rem; margin-bottom: 20px;">⚓</p>
+        <p style="font-size: 1.2rem; font-weight: 600;">현재 배치된 전함이 없습니다.</p>
+        <p style="font-size: 0.9rem;">사령관님, 이 구역은 현재 비어있습니다. 새로운 데이터를 이송해 주십시오!</p>
+    </div>
+    {{ end }}
+</ul>
+
+{{/* 🎯 하단 페이지 네비게이션 보급 */}}
+<div style="margin-top: 40px;">
+    {{ partial "pagination.html" . }}
+</div>
+{{ end }}

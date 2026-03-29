@@ -1,0 +1,50 @@
+{{ define "main" }}
+<article style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: 'Pretendard', sans-serif;">
+    {{/* 🎯 제목: 가독성을 위해 자간과 행간을 정밀 조정했습니다. */}}
+    <h1 style="font-size: 2.2rem; line-height: 1.3; color: #1a1a1a; margin-bottom: 20px; font-weight: 800; letter-spacing: -0.02em;">
+        {{ .Title }}
+    </h1>
+    
+    {{/* 🎯 메타 정보: 날짜와 카테고리를 깔끔하게 배치 */}}
+    <div class="post-meta" style="margin-bottom: 30px; color: #888; font-size: 0.95rem; display: flex; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <time>📅 {{ .Date.Format "2006년 01월 02일" }}</time>
+        {{ with .Params.categories }}
+            <span style="color: #eee;">|</span>
+            {{ range . }}
+            <a href="/categories/{{ . | urlize }}/" style="color: #e74c3c; text-decoration: none; font-weight: 600; background: #fff5f5; padding: 2px 8px; border-radius: 4px;">
+                #{{ . }}
+            </a>
+            {{ end }}
+        {{ end }}
+    </div>
+    
+    {{/* 🎯 대표 이미지: 이미지가 있을 경우에만 출력 (박스 쉐도우 추가) */}}
+    {{ with .Params.image }}
+    <div class="featured-image-wrapper" style="margin-bottom: 40px;">
+        <img src="{{ . | relURL }}" alt="{{ $.Title }}" class="featured-image" style="width: 100%; height: auto; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+    </div>
+    {{ end }}
+
+    {{/* 🎯 본문 내용: 폰트 사이즈와 줄간격을 최적화하여 오래 읽어도 편안하게 설정 */}}
+    <div class="post-content" style="line-height: 2.0; color: #333; font-size: 1.125rem; word-break: keep-all; overflow-wrap: break-word;">
+        {{ .Content }}
+    </div>
+
+    {{/* 🎯 법적 고지 및 면책 조항: namecard 전선에 맞게 브랜드명 수정 */}}
+    <div class="post-disclaimer" style="background-color: #f8f9fa; border-left: 5px solid #e74c3c; padding: 30px; margin-top: 80px; border-radius: 8px; font-size: 0.9rem; line-height: 1.8; color: #555;">
+        <div style="font-weight: 800; color: #222; margin-bottom: 15px; font-size: 1.1rem; display: flex; align-items: center;">
+            <span style="margin-right: 10px; font-size: 1.2rem;">⚠️</span> 법적 고지 및 면책 조항 (LEGAL DISCLAIMER)
+        </div>
+        <p style="margin-bottom: 12px;">
+            <strong>정보 제공 목적:</strong> <strong>Ad-Namecard (Future-Tech-Lab)</strong>에서 제공하는 모든 콘텐츠는 일반적인 정보 제공 목적으로 작성되었습니다. 본 내용은 특정 비즈니스나 법률적 결정을 위한 공식 자문이 아닙니다.
+        </p>
+        <p style="margin-bottom: 12px;">
+            <strong>보증 부재:</strong> 본 사이트는 정보의 최신성과 정확성을 유지하려 노력하나, 제공되는 데이터의 완전성이나 실시간 정확성에 대해 보장하지 않습니다. 본 정보를 이용한 모든 결정과 그에 따른 결과는 전적으로 사용자 본인의 책임입니다.
+        </p>
+        <p style="margin-bottom: 0; font-style: italic; color: #777; border-top: 1px solid #ddd; padding-top: 15px; margin-top: 15px;">
+            <strong>주의사항:</strong> 중요한 비즈니스 계약이나 법적 조치 전에는 반드시 전문가의 조언을 구하시기 바랍니다. 본 서비스는 정보 이용과 관련하여 발생하는 어떠한 직간접적 손해에 대해서도 책임을 지지 않습니다.
+        </p>
+    </div>
+
+</article>
+{{ end }}

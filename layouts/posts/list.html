@@ -1,0 +1,57 @@
+{{ define "main" }}
+<div class="home-header" style="border-bottom: 2px solid #f1f3f5; padding-bottom: 20px; margin-bottom: 40px;">
+    {{/* 🎯 제목을 '명함 광고'에 맞게 수정 */}}
+    <h2 style="margin: 0 0 8px 0; font-size: 1.6rem; font-weight: 900; color: #1a1a1a; letter-spacing: -0.03em;">🔥 최신 명함 광고</h2>
+    <p style="margin: 0; color: #6c757d; font-size: 1rem; font-family: 'Pretendard', sans-serif; font-weight: 500;">
+        사령관님의 제국 전역에서 수집된 비즈니스 파트너들의 명함을 확인하세요.
+    </p>
+</div>
+
+{{/* 🎯 핵심 수정: "posts" 섹션을 추가해야 323개의 글이 보입니다! */}}
+{{ $filteredPosts := where .Site.RegularPages "Section" "in" (slice "posts" "local" "youtube") }}
+{{ $paginator := .Paginate $filteredPosts 24 }}
+
+<ul class="post-list" style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 25px;">
+    {{ range $paginator.Pages }}
+    <li class="post-item" style="background: #ffffff; border-radius: 12px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); border: 1px solid #f1f3f5; transition: transform 0.2s, box-shadow 0.2s;">
+        <div class="post-title" style="margin-bottom: 12px;">
+            <a href="{{ .Permalink }}" style="text-decoration: none; color: #1a1a1a; font-size: 1.4rem; font-weight: 800; line-height: 1.4;">
+                {{ .Title }}
+            </a>
+        </div>
+        
+        <div class="post-meta" style="font-size: 0.9rem; color: #adb5bd; margin-bottom: 18px; display: flex; align-items: center; gap: 15px;">
+            <span class="date" style="font-weight: 500;">📅 {{ .Date.Format "2006년 01월 02일" }}</span>
+            
+            {{ range .Params.categories }}
+            {{ $displayName := . }}
+            {{/* 🎯 카테고리 한글화에 '명함' 추가 */}}
+            {{ if eq . "posts" }}{{ $displayName = "명함 정보" }}{{ end }}
+            {{ if eq . "local" }}{{ $displayName = "지역 정보" }}{{ end }}
+            <span class="category" style="background: #fff0f0; color: #e74c3c; padding: 3px 12px; border-radius: 6px; font-weight: 700; font-size: 0.8rem;">
+                {{ $displayName }}
+            </span>
+            {{ end }}
+        </div>
+
+        <div class="post-desc" style="color: #495057; font-size: 1rem; line-height: 1.8; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+            {{- if and .Description (ne .Description .Title) -}}
+                {{ .Description }}
+            {{- else -}}
+                {{ .Summary | plainify | truncate 220 }}
+            {{- end -}}
+        </div>
+    </li>
+    {{ end }}
+</ul>
+
+<div style="margin-top: 50px;">
+    {{ partial "pagination.html" . }}
+</div>
+
+{{ if eq (len $filteredPosts) 0 }}
+<div style="text-align: center; padding: 80px 0; color: #adb5bd;">
+    <p style="font-size: 1.1rem; font-weight: 500;">데이터 로딩 중이거나 새로운 명함을 준비 중입니다!</p>
+</div>
+{{ end }}
+{{ end }}

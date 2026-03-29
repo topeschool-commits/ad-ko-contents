@@ -1,0 +1,53 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{{- /* 1. 구글 애드센스 - hugo.toml의 ID를 자동으로 불러옵니다 */ -}}
+{{ with .Site.Params.googleAdsenseId }}
+<meta name="google-adsense-account" content="{{ . }}">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ . }}" crossorigin="anonymous"></script>
+{{ end }}
+
+{{- /* 2. 변수 설정 및 브랜드 컬러 동기화 */ -}}
+{{- $siteName := .Site.Title -}}
+{{- $firstLetter := substr $siteName 0 1 -}}
+{{- $brandColor := .Site.Params.brandColor | default "#e74c3c" -}}
+{{- $description := .Description | default .Site.Params.description | default "대한민국 지역 비즈니스 정보 센터" -}}
+
+<title>{{ if .IsHome }}{{ $siteName }}{{ else }}{{ .Title }} - {{ $siteName }}{{ end }}</title>
+<meta name="description" content="{{ $description }}">
+<link rel="canonical" href="{{ .Permalink }}">
+<link rel="stylesheet" href="/css/style.css">
+
+{{- /* 3. 소셜 미디어 공유 최적화 (Open Graph) */ -}}
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ if .IsHome }}{{ $siteName }}{{ else }}{{ .Title }}{{ end }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:image" content="{{ .Site.BaseURL }}images/logo.png">
+<meta property="og:site_name" content="{{ $siteName }}">
+<meta name="twitter:card" content="summary_large_image">
+
+{{- /* 4. 지능형 SVG 파비콘 (브랜드 컬러 자동 반영) */ -}}
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='{{ $brandColor | urlquery }}'/><text y='50%' x='50%' font-size='65' font-weight='900' font-family='Arial, sans-serif' dominant-baseline='central' text-anchor='middle' fill='white'>{{ $firstLetter }}</text></svg>">
+
+<style>
+    /* 💡 제국 통합 테마 스타일링 */
+    :root { --brand-color: {{ $brandColor }}; }
+
+    .site-nav a:hover, .footer-nav a:hover { color: var(--brand-color) !important; text-decoration: underline !important; }
+    .site-nav a { transition: all 0.2s ease; position: relative; padding-bottom: 5px; }
+    .active-menu { border-bottom: 2px solid var(--brand-color) !important; color: var(--brand-color) !important; padding-bottom: 5px; }  
+
+    /* 📝 한글 가독성 및 본문 최적화 (Pretendard 기반 권장) */
+    .post-content { 
+        font-family: 'Pretendard', 'Noto Sans KR', sans-serif !important;
+        font-size: 1.15rem !important; 
+        line-height: 1.9 !important;  
+        color: #2c3e50 !important;   
+        word-break: keep-all; 
+        overflow-wrap: break-word;
+    }
+    
+    /* 이미지 캡션 및 본문 이미지 정렬 */
+    .post-content img { max-width: 100%; height: auto; border-radius: 8px; margin: 20px 0; }
+</style>

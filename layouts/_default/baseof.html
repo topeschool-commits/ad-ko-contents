@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{{/* 🎯 수정: 한국어 사이트이므로 lang="ko"로 변경하여 SEO 점수를 확보합니다. */}}
+<html lang="ko">
+<head>
+    {{ partial "head.html" . }}
+</head>
+<body>
+    {{ partial "header.html" . }}
+
+    {{/* 팁: min-height: 70vh 설정은 푸터가 공중에 뜨지 않게 하는 아주 훌륭한 전술입니다. */}}
+    <main style="padding: 40px 0; min-height: 70vh; background-color: #f8f9fa;">
+        <div class="container" style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
+            {{ block "main" . }}{{ end }}
+        </div>
+    </main>
+
+    {{ partial "footer.html" . }}
+</body>
+</html>
