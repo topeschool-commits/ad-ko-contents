@@ -1,6 +1,6 @@
 ---
 title: "이용약관 - AD-CONTENTS"
-date: 2026-03-30
+date: 2026-03-29
 slug: "terms"
 description: "AD-CONTENTS(Future Tech Lab) 플랫폼 이용에 관한 종합적인 이용약관 및 법적 조건입니다."
 draft: false

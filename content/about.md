@@ -1,6 +1,6 @@
 ---
 title: "소개 - AD-CONTENTS"
-date: 2026-03-30
+date: 2026-03-29
 slug: "about"
 description: "대한민국 최대 규모의 지식 콘텐츠 및 비즈니스 트렌드 리포트를 제공하는 통합 정보 플랫폼입니다."
 draft: false

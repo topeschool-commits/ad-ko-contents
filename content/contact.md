@@ -1,6 +1,6 @@
 ---
 title: "문의하기 - AD-CONTENTS"
-date: 2026-03-30
+date: 2026-03-29
 slug: "contact"
 description: "AD-CONTENTS에 대한 피드백, 비즈니스 콘텐츠 제휴 또는 데이터 협력을 위해 사령탑으로 연락해 주세요."
 draft: false

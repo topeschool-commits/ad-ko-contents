@@ -1,6 +1,6 @@
 ---
 title: "개인정보처리방침 - AD-CONTENTS"
-date: 2026-03-30
+date: 2026-03-29
 slug: "privacy"
 description: "AD-CONTENTS(Future Tech Lab)의 포괄적인 개인정보 보호 정책 및 데이터 보안 표준 가이드입니다."
 draft: false
