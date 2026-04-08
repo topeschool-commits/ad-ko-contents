@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /bin/
+Disallow: /config/
+
+Sitemap: https://contents.adnamecard.com/sitemap.xml
+

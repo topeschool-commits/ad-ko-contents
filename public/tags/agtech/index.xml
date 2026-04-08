@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AgTech on AD-CONTENTS</title>
+    <link>https://contents.adnamecard.com/tags/agtech/</link>
+    <description>Recent content in AgTech on AD-CONTENTS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 04 Apr 2026 12:14:48 +0900</lastBuildDate>
+    <atom:link href="https://contents.adnamecard.com/tags/agtech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI Agriculture Crop Yield Prediction Revolutionizing Farming</title>
+      <link>https://contents.adnamecard.com/posts/ai-agriculture-crop-yield-prediction-revolutionizing-farming/</link>
+      <pubDate>Sat, 04 Apr 2026 12:14:48 +0900</pubDate>
+      <guid>https://contents.adnamecard.com/posts/ai-agriculture-crop-yield-prediction-revolutionizing-farming/</guid>
+      <description>📖 5 min read&#xA;Agriculture stands at the cusp of a technological revolution, and artificial intelligence (AI) is leading the charge. The ability to accurately predict crop yields before harvest is no longer a futuristic fantasy but a tangible reality. By leveraging sophisticated algorithms and vast datasets, AI is empowering farmers to make informed decisions, optimize resource allocation, and mitigate risks associated with unpredictable environmental factors. This translates to increased efficiency, reduced waste, and ultimately, a more sustainable and profitable agricultural sector.</description>
+    </item>
+  </channel>
+</rss>

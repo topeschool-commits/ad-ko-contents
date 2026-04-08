@@ -30,3 +30,5 @@ paginate = 20
 
 buildFuture = true
 buildDrafts = true
+[outputs]
+  home = ["HTML", "RSS", "JSON"]

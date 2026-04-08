@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RSA on AD-CONTENTS</title>
+    <link>https://contents.adnamecard.com/tags/rsa/</link>
+    <description>Recent content in RSA on AD-CONTENTS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 01 Apr 2026 00:04:43 +0900</lastBuildDate>
+    <atom:link href="https://contents.adnamecard.com/tags/rsa/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Encryption Software Basics Explained</title>
+      <link>https://contents.adnamecard.com/posts/encryption-software-basics-explained/</link>
+      <pubDate>Wed, 01 Apr 2026 00:04:43 +0900</pubDate>
+      <guid>https://contents.adnamecard.com/posts/encryption-software-basics-explained/</guid>
+      <description>📖 5 min read&#xA;In an era defined by increasing digital interactions and data dependence, the safeguarding of sensitive information is paramount. Encryption software provides a powerful mechanism for securing data against unauthorized access and potential breaches. Whether you&#39;re protecting personal files, securing business communications, or ensuring the confidentiality of sensitive transactions, understanding the fundamentals of encryption is essential. This comprehensive guide aims to demystify the core concepts of encryption, exploring its different forms, underlying principles, and practical applications.</description>
+    </item>
+  </channel>
+</rss>
