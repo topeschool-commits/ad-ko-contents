@@ -1,13 +1,13 @@
 {{ define "main" }}
 <div class="home-header" style="border-bottom: 2px solid #f1f3f5; padding-bottom: 20px; margin-bottom: 40px;">
-    {{/* 🎯 제목을 '명함 광고'에 맞게 수정 */}}
-    <h2 style="margin: 0 0 8px 0; font-size: 1.6rem; font-weight: 900; color: #1a1a1a; letter-spacing: -0.03em;">🔥 최신 명함 광고</h2>
+    {{/* 🎯 타이틀 개조: '광고'를 '비즈니스 콘텐츠'로 격상 */}}
+    <h2 style="margin: 0 0 8px 0; font-size: 1.6rem; font-weight: 900; color: #1a1a1a; letter-spacing: -0.03em;">🔥 최신 비즈니스 콘텐츠</h2>
     <p style="margin: 0; color: #6c757d; font-size: 1rem; font-family: 'Pretendard', sans-serif; font-weight: 500;">
-        사령관님의 제국 전역에서 수집된 비즈니스 파트너들의 명함을 확인하세요.
+        사령관님의 제국 전역에서 엄선된 최신 비즈니스 인사이트와 전문 콘텐츠를 확인하세요.
     </p>
 </div>
 
-{{/* 🎯 핵심 수정: "posts" 섹션을 추가해야 323개의 글이 보입니다! */}}
+{{/* 🎯 핵심 필터링: posts, local, youtube 섹션의 모든 정예 원고를 수집 */}}
 {{ $filteredPosts := where .Site.RegularPages "Section" "in" (slice "posts" "local" "youtube") }}
 {{ $paginator := .Paginate $filteredPosts 24 }}
 
@@ -25,9 +25,10 @@
             
             {{ range .Params.categories }}
             {{ $displayName := . }}
-            {{/* 🎯 카테고리 한글화에 '명함' 추가 */}}
-            {{ if eq . "posts" }}{{ $displayName = "명함 정보" }}{{ end }}
+            {{/* 🎯 카테고리 라벨 개조: '명함' 대신 '비즈니스'와 '콘텐츠' 강조 */}}
+            {{ if eq . "posts" }}{{ $displayName = "비즈니스 콘텐츠" }}{{ end }}
             {{ if eq . "local" }}{{ $displayName = "지역 정보" }}{{ end }}
+            {{ if eq . "youtube" }}{{ $displayName = "영상 미디어" }}{{ end }}
             <span class="category" style="background: #fff0f0; color: #e74c3c; padding: 3px 12px; border-radius: 6px; font-weight: 700; font-size: 0.8rem;">
                 {{ $displayName }}
             </span>
@@ -51,7 +52,7 @@
 
 {{ if eq (len $filteredPosts) 0 }}
 <div style="text-align: center; padding: 80px 0; color: #adb5bd;">
-    <p style="font-size: 1.1rem; font-weight: 500;">데이터 로딩 중이거나 새로운 명함을 준비 중입니다!</p>
+    <p style="font-size: 1.1rem; font-weight: 500;">새로운 비즈니스 인사이트를 준비 중입니다!</p>
 </div>
 {{ end }}
 {{ end }}
