@@ -1,0 +1,75 @@
+<style>
+  /* 번호판 컨테이너: 가로 정렬 및 중앙 배치 */
+  .pagination {
+    display: flex !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 40px 0 !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    flex-wrap: wrap;
+  }
+
+  /* 각 번호 아이템 스타일 */
+  .pagination li {
+    display: block !important;
+  }
+
+  .pagination li a, .pagination li span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 12px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    background: #fff;
+    color: #444;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  }
+
+  /* 마우스 올렸을 때 효과 */
+  .pagination li a:hover {
+    background: #f8f9fa;
+    border-color: #e74c3c;
+    color: #e74c3c;
+    transform: translateY(-2px);
+  }
+
+  /* 현재 활성화된 페이지 번호 */
+  .pagination li.active a {
+    background: #e74c3c !important;
+    color: #fff !important;
+    border-color: #e74c3c !important;
+    box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3);
+  }
+
+  /* 비활성화된 버튼 (화살표 등) */
+  .pagination li.disabled span {
+    color: #ccc;
+    background: #fafafa;
+    cursor: not-allowed;
+  }
+</style>
+
+<div class="pagination-wrapper">
+  
+  {{ $pag := .Paginator }}
+  {{ if gt $pag.TotalPages 1 }}
+  <ul class="pagination">
+    {{ if $pag.HasPrev }}<li><a href="{{ $pag.Prev.URL }}">&laquo;</a></li>{{ else }}<li class="disabled"><span>&laquo;</span></li>{{ end }}
+    {{ range $pag.Pagers }}
+      <li class="{{ if eq . $pag }}active{{ end }}">
+        <a href="{{ .URL }}">{{ .PageNumber }}</a>
+      </li>
+    {{ end }}
+    {{ if $pag.HasNext }}<li><a href="{{ $pag.Next.URL }}">&raquo;</a></li>{{ else }}<li class="disabled"><span>&raquo;</span></li>{{ end }}
+  </ul>
+  {{ end }}
+
+</div>
