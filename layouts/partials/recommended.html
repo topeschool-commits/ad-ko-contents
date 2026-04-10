@@ -1,0 +1,15 @@
+{{/* 🎯 각 기지 전용: 자가 유도 추천 시스템 (Recommended Reading) */}}
+<div class="recommended-container" style="margin: 50px 0; padding: 30px; background-color: #f8f9fa; border-radius: 15px; border: 1px solid #eee;">
+    <p style="margin: 0 0 20px 0; font-size: 18px; font-weight: bold; color: #0056b3;">🔗 Recommended Reading</p>
+    <ul style="margin: 0; padding: 0; list-style: none;">
+        {{/* 🚀 현재 섹션(posts)에서 현재 글을 제외한 최신글 5척을 실시간 사열 */}}
+        {{ $currentID := .File.UniqueID }}
+        {{ range first 5 (where (where .Site.RegularPages "Section" "posts") "File.UniqueID" "!=" $currentID) }}
+        <li style="margin-bottom: 12px; padding-left: 15px; border-left: 3px solid #0056b3;">
+            <a href="{{ .RelPermalink }}" style="color: #212529; text-decoration: none; font-weight: bold; font-size: 16px; transition: 0.2s;" onmouseover="this.style.color='#0056b3'" onmouseout="this.style.color='#212529'">
+                {{ .Title }}
+            </a>
+        </li>
+        {{ end }}
+    </ul>
+</div>

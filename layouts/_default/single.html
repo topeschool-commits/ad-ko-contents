@@ -28,6 +28,9 @@
     {{/* 🎯 본문 내용: 폰트 사이즈와 줄간격을 최적화하여 오래 읽어도 편안하게 설정 */}}
     <div class="post-content" style="line-height: 2.0; color: #333; font-size: 1.125rem; word-break: keep-all; overflow-wrap: break-word;">
         {{ .Content }}
+ 
+    {{/* Strategic Placement: Deployed native recommended reading system */}}
+    {{ partial "recommended.html" . }}
     </div>
 
     {{/* 🎯 법적 고지 및 면책 조항: namecard 전선에 맞게 브랜드명 수정 */}}
